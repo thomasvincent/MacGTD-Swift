@@ -22,6 +22,8 @@ MacGTD (formerly MacGTD-Microsoft) has been migrated from AppleScript/Automator 
 - Swift library for integration with other applications
 - Semantic versioning for better dependency management
 - Packaged AppleScripts available for legacy support
+- Comprehensive test suite (unit, integration, and functional tests)
+- macOS installer package
 
 ## Requirements
 
@@ -31,6 +33,15 @@ MacGTD (formerly MacGTD-Microsoft) has been migrated from AppleScript/Automator 
 
 ## Installation
 
+### Installer Package
+Download and run the installer package from the latest release:
+
+```bash
+# Download from GitHub releases
+open "MacGTD-1.0.0-Installer.pkg"
+```
+
+### Manual Installation
 ```bash
 # Clone the repository
 git clone https://github.com/thomasvincent/MacGTD-Swift.git
@@ -57,6 +68,42 @@ gtd version
 
 # Show help
 gtd help
+```
+
+## Testing
+
+The project includes comprehensive testing at multiple levels:
+
+### Unit Tests
+Tests individual components in isolation:
+```bash
+swift test --filter "MacGTDTests.VersionTests"
+swift test --filter "MacGTDTests.TaskManagerTests"
+```
+
+### Integration Tests
+Tests the integration between components and external systems:
+```bash
+swift test --filter "MacGTDTests.IntegrationTests"
+```
+
+### Functional Tests
+Tests the system as a whole, verifying workflows:
+```bash
+swift test --filter "MacGTDTests.FunctionalTests"
+```
+
+### Running All Tests
+Use the provided script to run all tests:
+```bash
+./Scripts/run_tests.sh
+```
+
+## Building the Installer
+
+To create a macOS installer package:
+```bash
+./Scripts/create_installer.sh
 ```
 
 ## Legacy AppleScripts
