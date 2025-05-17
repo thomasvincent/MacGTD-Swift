@@ -1,0 +1,37 @@
+name: Publish Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Swift
+        uses: fwal/setup-swift@v1
+        with:
+          swift-version: '5.5'
+      
+      - name: Build
+        run: swift build -c release
+      
+      - name: Package AppleScripts
+        run: |
+          cd Package/AppleScripts
+          chmod +x create_workflow.sh
+          ./create_workflow.sh
+      
+      - name: Upload AppleScripts to GitHub Packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: MS-GTD-QuickCapture
+          path: Package/AppleScripts/MS-GTD-QuickCapture.zip
+      
+      - name: Upload Binary to GitHub Packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: GTDTool
+          path: .build/release/GTDTool
