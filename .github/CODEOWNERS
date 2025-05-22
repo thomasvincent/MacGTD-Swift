@@ -1,0 +1,28 @@
+# Global code ownership - Thomas Vincent owns all code
+* @thomasvincent
+
+# Swift-specific files
+*.swift @thomasvincent
+Package.swift @thomasvincent
+Package.resolved @thomasvincent
+
+# Xcode project files
+*.xcodeproj/ @thomasvincent
+*.xcworkspace/ @thomasvincent
+*.xcconfig @thomasvincent
+
+# Configuration files
+.github/ @thomasvincent
+.gitignore @thomasvincent
+
+# CI/CD and automation
+.github/workflows/ @thomasvincent
+.github/dependabot.yml @thomasvincent
+
+# Documentation
+README.md @thomasvincent
+docs/ @thomasvincent
+*.md @thomasvincent
+
+# Tests
+Tests/ @thomasvincent
